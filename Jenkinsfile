@@ -15,12 +15,12 @@ pipeline {
          }
      }
 
-     post {
-         always {
-            allure([
-               reportBuildPolicy: 'ALWAYS'
-               result: [[path: 'allure-results']]
-            ])
+      post {
+             always {
+                 allure([
+                     reportBuildPolicy: 'ALWAYS',
+                     results: [[path: 'allure-results']]
+                 ])
+             }
          }
-     }
 }
