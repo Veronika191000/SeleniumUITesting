@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 import static utils.ElementUtils.clickOnElementJsExecutor;
+import static utils.ElementUtils.waitForElement;
 
 public class MainPage extends BasePage {
 
@@ -69,6 +70,7 @@ public class MainPage extends BasePage {
 
     @Step("validate that main page is loaded")
     public boolean validateMainPageIsLoaded() {
+        waitForElement(2000);
         return backToHomeButton.isDisplayed()
                 && workspaceSection.isDisplayed()
                 && searchField.isDisplayed();
