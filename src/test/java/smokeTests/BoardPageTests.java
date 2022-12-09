@@ -1,4 +1,4 @@
-package trelloTest;
+package smokeTests;
 
 import baseTest.BaseTests;
 import org.testng.annotations.BeforeMethod;
@@ -33,12 +33,6 @@ public class BoardPageTests extends BaseTests {
     }
 
     @Test
-    public void validateBoardCanNotBeCreatedWithEmptyBoard() {
-        mainPage.createBoard("");
-        assertThat(mainPage.validateSubmitBoardButtonIsDisabled()).isTrue();
-    }
-
-    @Test
     public void validateBoardCanBeFound() {
         String boardTitle = ConfigProvider.BOARD_TITLE + generateRandomValue();
         mainPage.createBoard(boardTitle)
@@ -57,17 +51,6 @@ public class BoardPageTests extends BaseTests {
         assertThat(boardPage.validateBoardsPageIsLoaded()).isTrue();
         boardPage.createList(LIST_TITLE);
         boardPage.validateListNameIsPresent(LIST_TITLE);
-    }
-
-    @Test
-    public void validateListCanNotBeCreatedWithEmptyTitleWithinBoard() {
-        String boardTitle = ConfigProvider.BOARD_TITLE + generateRandomValue();
-        BoardPage boardPage = mainPage.createBoard(boardTitle)
-                .submitBoard();
-        assertThat(boardPage.validateBoardsPageIsLoaded()).isTrue();
-        int currentListCount = boardPage.getListCount();
-        boardPage.createList("");
-        assertThat(boardPage.getListCount()).isEqualTo(currentListCount);
     }
 
     @Test

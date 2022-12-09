@@ -1,25 +1,19 @@
-package trelloTest;
+package negativeTests;
 
 import baseTest.BaseTests;
 import io.qameta.allure.Description;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import page.BoardPage;
 import page.LoginPage;
 import page.MainPage;
 import utils.ConfigProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static utils.ConfigProvider.LIST_TITLE;
+import static utils.StringUtils.generateRandomValue;
 
-public class AuthorizationPageTests extends BaseTests {
-
-    @Test
-    @Description("Validate that user can be successfully Log in to the Trello")
-    public void validateUserCanLogIn() {
-        String login = ConfigProvider.ADMIN_LOGIN;
-        String password = ConfigProvider.ADMIN_PASSWORD;
-        LoginPage loginPage = new LoginPage();
-        MainPage mainPage = loginPage.logIn(login, password);
-        assertThat(mainPage.validateMainPageIsLoaded()).isTrue();
-    }
+public class NegativeAuthorizationTests extends BaseTests {
 
     @Test
     @Description("Validate that user can not Log in to the Trello with incorrect email")
