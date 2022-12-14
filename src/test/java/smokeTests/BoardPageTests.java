@@ -66,19 +66,6 @@ public class BoardPageTests extends BaseTests {
     }
 
     @Test
-    public void validateCardCanNotBeCreatedWithEmptyName() {
-        String boardTitle = ConfigProvider.BOARD_TITLE + generateRandomValue();
-        BoardPage boardPage = mainPage.createBoard(boardTitle)
-                .submitBoard();
-        assertThat(boardPage.validateBoardsPageIsLoaded()).isTrue();
-        boardPage.createList(LIST_TITLE);
-        assertThat(boardPage.validateListNameIsPresent(LIST_TITLE)).isTrue();
-        int currentCardCount = boardPage.getCardCount(LIST_TITLE);
-        boardPage.createCard(LIST_TITLE, "");
-        assertThat(boardPage.getCardCount(LIST_TITLE)).isEqualTo(currentCardCount);
-    }
-
-    @Test
     public void validateCardCanContainDescription() {
         BoardPage boardPage = cardCreation(ConfigProvider.BOARD_TITLE + generateRandomValue(), LIST_TITLE, CARD_TITLE);
         boardPage.openCardByName(LIST_TITLE, CARD_TITLE)
